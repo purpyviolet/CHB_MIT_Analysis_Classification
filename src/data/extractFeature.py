@@ -82,4 +82,4 @@ def preprocess_and_extract_features_mne_with_timestamps(file_name):
 
     return np.array(features_with_timestamps)
 
-preprocess_and_extract_features_mne_with_timestamps("data/chb01/chb01_03.edf")
+# preprocess_and_extract_features_mne_with_timestamps("data/chb01/chb01_03.edf")
