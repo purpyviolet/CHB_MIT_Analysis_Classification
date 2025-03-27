@@ -1,0 +1,6 @@
+KNN Results:
+Accuracy: 0.8952
+F1 Score: 0.9026
+Precision: 0.8413
+Recall: 0.9735
+ROC AUC: 0.9521

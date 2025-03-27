@@ -12,6 +12,11 @@ import xgboost as xgb
 import lightgbm as lgb
 from catboost import CatBoostClassifier
 from tqdm import tqdm
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import LinearSVC
+from sklearn.neural_network import MLPClassifier
 
 # 创建一个保存结果的文件夹
 subject_id = 1
@@ -51,12 +56,12 @@ X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, te
 
 # 定义模型字典
 models = {
-    # "DecisionTree": DecisionTreeClassifier(random_state=0),
-    # "RandomForest": RandomForestClassifier(random_state=0),
-    # "SVM": SVC(probability=True, random_state=0),
     "XGBoost": xgb.XGBClassifier(random_state=0, use_label_encoder=False, eval_metric='mlogloss'),
-    #"LightGBM": lgb.LGBMClassifier(random_state=0),
-    #"CatBoost": CatBoostClassifier(random_state=0, verbose=0)
+    "LogisticRegression": LogisticRegression(random_state=0, max_iter=1000),
+    "KNN": KNeighborsClassifier(n_neighbors=5),
+    "NaiveBayes": GaussianNB(),
+    "LinearSVM": LinearSVC(random_state=0),
+    # "MLP": MLPClassifier(hidden_layer_sizes=(100,), random_state=0, max_iter=100)
 }
 
 # 创建结果字典
@@ -71,7 +76,7 @@ for model_name, model in tqdm(models.items(), desc="Training models", unit="mode
 
     # 对测试集进行预测
     y_pred = model.predict(X_test)
-    y_proba = model.predict_proba(X_test)[:, 1]  # 用于 ROC-AUC
+    y_proba = model.predict_proba(X_test)[:, 1] if hasattr(model, "predict_proba") else model.decision_function(X_test)
 
     # 计算评估指标
     accuracy = accuracy_score(y_test, y_pred)

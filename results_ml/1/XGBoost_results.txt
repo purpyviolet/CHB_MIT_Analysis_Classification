@@ -1,0 +1,6 @@
+XGBoost Results:
+Accuracy: 0.9962
+F1 Score: 0.9962
+Precision: 0.9934
+Recall: 0.9991
+ROC AUC: 0.9998

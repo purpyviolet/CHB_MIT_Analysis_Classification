@@ -1,0 +1,6 @@
+LinearSVM Results:
+Accuracy: 0.6166
+F1 Score: 0.6373
+Precision: 0.6031
+Recall: 0.6756
+ROC AUC: 0.6650

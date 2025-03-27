@@ -1,0 +1,6 @@
+MLP Results:
+Accuracy: 0.6633
+F1 Score: 0.6809
+Precision: 0.6455
+Recall: 0.7203
+ROC AUC: 0.7276

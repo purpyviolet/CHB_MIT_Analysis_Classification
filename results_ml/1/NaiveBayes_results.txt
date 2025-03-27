@@ -1,0 +1,6 @@
+NaiveBayes Results:
+Accuracy: 0.5736
+F1 Score: 0.6768
+Precision: 0.5440
+Recall: 0.8952
+ROC AUC: 0.6485
